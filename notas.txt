@@ -2,7 +2,7 @@
   - Matías Ortega Sepúlveda
   - Luis Fuentes Rain
 
--Link github:
+-Link github: https://github.com/fainaru-inacap/inventario-veterinaria-m-y-l.git
 
 Usuarios:
 - Super Admin: 
