@@ -1,0 +1,118 @@
+{% extends 'base_dashboard.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold text-primary"><i class="fas fa-users me-2"></i>Gestión de Usuarios</h2>
+    <a href="{% url 'crear_usuario' %}" class="btn btn-success rounded-pill px-4">
+        <i class="fas fa-plus me-2"></i>Nuevo Usuario
+    </a>
+</div>
+
+<div class="card border-0 shadow-sm rounded-4">
+    <div class="card-body p-0">
+        <div class="table-responsive p-4">
+            <table id="tablaUsuarios" class="table table-hover align-middle mb-0">
+                <thead class="bg-light">
+                    <tr>
+                        <th class="ps-4 py-3">Usuario</th>
+                        <th class="py-3">Rol</th>
+                        <th class="py-3">Estado</th>
+                        <th class="text-end pe-4 py-3">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for usuario in usuarios %}
+                    <tr>
+                        <td class="ps-4">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center me-3 fw-bold"
+                                    style="width: 40px; height: 40px;">
+                                    {{ usuario.username|make_list|first|upper }}
+                                </div>
+                                <div>
+                                    <div class="fw-bold">{{ usuario.first_name }} {{ usuario.last_name }}</div>
+                                    <div class="small text-muted">{{ usuario.email }}</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            {% if usuario.is_superuser %}
+                            <span class="badge bg-danger">Super Admin</span>
+                            {% elif usuario.is_staff %}
+                            <span class="badge bg-warning text-dark">Administrador</span>
+                            {% else %}
+                            <span class="badge bg-info text-dark">Usuario Normal</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if usuario.is_active %}
+                            <span
+                                class="badge bg-success bg-opacity-10 text-success border border-success px-3 rounded-pill">Activo</span>
+                            {% else %}
+                            <span
+                                class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary px-3 rounded-pill">Inactivo</span>
+                            {% endif %}
+                        </td>
+                        <td class="text-end pe-4">
+                            <a href="{% url 'cambiar_contrasena' usuario.id %}"
+                                class="btn btn-sm btn-outline-warning me-1" title="Cambiar Contraseña">
+                                <i class="fas fa-key"></i>
+                            </a>
+                            <a href="{% url 'editar_usuario' usuario.id %}" class="btn btn-sm btn-outline-primary me-1"
+                                title="Editar">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a href="{% url 'eliminar_usuario' usuario.id %}" class="btn btn-sm btn-outline-danger"
+                                title="Eliminar">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4" class="text-center py-5 text-muted">
+                            <i class="fas fa-user-slash fa-3x mb-3"></i>
+                            <p>No hay usuarios registrados.</p>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    $(document).ready(function () {
+        $('#tablaUsuarios').DataTable({
+            language: {
+                "decimal": "",
+                "emptyTable": "No hay datos disponibles en la tabla",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+                "infoEmpty": "Mostrando 0 a 0 de 0 entradas",
+                "infoFiltered": "(filtrado de _MAX_ entradas totales)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ entradas",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar:",
+                "zeroRecords": "No se encontraron registros coincidentes",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Último",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                },
+                "aria": {
+                    "sortAscending": ": activar para ordenar la columna ascendente",
+                    "sortDescending": ": activar para ordenar la columna descendente"
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,203 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% if user.is_authenticated %}
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="alert alert-success shadow-sm border-0 rounded-4" role="alert">
+                <h4 class="alert-heading fw-bold"><i class="fas fa-user-check me-2"></i>¡Bienvenido, {{ user.email }}!
+                </h4>
+                <p>Has iniciado sesión correctamente en el sistema de gestión de <strong>Veterinaria Chucky PB</strong>.
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row g-4 mt-2">
+        <div class="col-md-6 col-lg-4">
+            <div class="card border-0 shadow-sm rounded-4 h-100 hover-lift">
+                <div class="card-body p-4 text-center">
+                    <div class="d-inline-block p-3 rounded-circle bg-primary bg-opacity-10 text-primary mb-3">
+                        <i class="fas fa-users fa-2x"></i>
+                    </div>
+                    <h5 class="fw-bold">Gestión de Usuarios</h5>
+                    <p class="text-muted small">Administrar cuentas de administradores y usuarios del sistema.</p>
+                    <a href="{% url 'lista_usuarios' %}" class="btn btn-outline-primary rounded-pill px-4">Ir a
+                        Usuarios</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="card border-0 shadow-sm rounded-4 h-100 hover-lift">
+                <div class="card-body p-4 text-center">
+                    <div class="d-inline-block p-3 rounded-circle bg-warning bg-opacity-10 text-warning mb-3">
+                        <i class="fas fa-box-open fa-2x"></i>
+                    </div>
+                    <h5 class="fw-bold">Gestión de Productos</h5>
+                    <p class="text-muted small">Administrar inventario, categorías y stock de productos.</p>
+                    <a href="#" class="btn btn-outline-warning rounded-pill px-4">Ir a Productos</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% else %}
+
+<section id="inicio" class="hero-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="hero-card">
+                    <span class="badge bg-warning text-dark mb-3 px-3 py-2 rounded-pill fw-bold">¡Bienvenidos!</span>
+                    <h1 class="display-4 fw-bolder mb-4 text-dark">
+                        Salud y Bienestar para <br>
+                        <span class="text-success">Tus Mascotas</span>
+                    </h1>
+                    <p class="lead text-muted mb-5">
+                        Somos especialistas en medicina veterinaria preventiva y curativa.
+                        Tu mascota merece la mejor atención en un ambiente cálido y profesional.
+                    </p>
+                    <div class="d-flex justify-content-center gap-3 flex-wrap">
+                        <a href="#servicios" class="btn btn-outline-secondary btn-lg px-5 py-3 fw-bold rounded-3">
+                            Ver Servicios
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="servicios" class="py-5 bg-white">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h6 class="text-uppercase text-warning fw-bold spacing-2">Lo que hacemos</h6>
+            <h2 class="fw-bolder display-6">Servicios Veterinarios</h2>
+            <div class="mx-auto mt-3 bg-success" style="width: 60px; height: 4px; border-radius: 2px;"></div>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-6 col-lg-4">
+                <div class="service-card">
+                    <div class="service-icon text-success">
+                        <i class="fas fa-stethoscope fa-2x"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Medicina General</h4>
+                    <p class="text-muted">Chequeos completos para asegurar que tu amigo peludo esté en perfectas
+                        condiciones.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="service-card">
+                    <div class="service-icon text-warning">
+                        <i class="fas fa-shield-virus fa-2x"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Vacunación</h4>
+                    <p class="text-muted">Planes de vacunación personalizados según la edad y estilo de vida de tu
+                        mascota.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="service-card">
+                    <div class="service-icon text-danger">
+                        <i class="fas fa-heartbeat fa-2x"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Cirugía</h4>
+                    <p class="text-muted">Quirófano equipado con monitoreo avanzado para procedimientos seguros.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="service-card">
+                    <div class="service-icon text-info">
+                        <i class="fas fa-cut fa-2x"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Estética</h4>
+                    <p class="text-muted">Baños, cortes y limpieza para que se sientan frescos y limpios.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="service-card">
+                    <div class="service-icon text-primary">
+                        <i class="fas fa-microscope fa-2x"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Laboratorio</h4>
+                    <p class="text-muted">Análisis clínicos rápidos para diagnósticos certeros y oportunos.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="service-card">
+                    <div class="service-icon text-dark">
+                        <i class="fas fa-bone fa-2x"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Nutrición</h4>
+                    <p class="text-muted">Asesoría alimentaria y venta de alimentos premium y medicados.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="contacto" class="contact-section">
+    <div class="container py-5">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-5 text-white">
+                <h2 class="display-5 fw-bold mb-4">Estamos aquí para ayudarte</h2>
+                <p class="lead mb-4 opacity-75">Visítanos en nuestra clínica o contáctanos para agendar una hora.</p>
+
+                <div class="d-flex align-items-start mb-4">
+                    <div class="me-3 mt-1 text-warning"><i class="fas fa-map-marker-alt fa-2x"></i></div>
+                    <div>
+                        <h5 class="fw-bold mb-1">Ubicación</h5>
+                        <p class="mb-0 opacity-75">Av. San Miguel, Talca</p>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-start mb-4">
+                    <div class="me-3 mt-1 text-warning"><i class="fas fa-phone-alt fa-2x"></i></div>
+                    <div>
+                        <h5 class="fw-bold mb-1">Teléfono</h5>
+                        <p class="mb-0 opacity-75">+569 1234 5678</p>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-start">
+                    <div class="me-3 mt-1 text-warning"><i class="fas fa-clock fa-2x"></i></div>
+                    <div>
+                        <h5 class="fw-bold mb-1">Horario</h5>
+                        <p class="mb-0 opacity-75">Lun-Vie: 09:00 - 20:00 <br> Sáb: 10:00 - 14:00</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7">
+                <div class="bg-white p-2 rounded-4 shadow-lg">
+
+                    <div class="ratio ratio-16x9 rounded-4 overflow-hidden">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1327.8818006305316!2d-71.62602781371426!3d-35.43698714392513!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9665c6d4505bc4fb%3A0x45ecdd51bb8bc151!2sInacap%20Talca!5e0!3m2!1ses-419!2scl!4v1764560133353!5m2!1ses-419!2scl"
+                            style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{% endblock %}

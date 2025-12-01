@@ -1,0 +1,23 @@
+-Integrantes:
+  - Matías Ortega Sepúlveda
+  - Luis Fuentes Rain
+
+-Link github:
+
+Usuarios:
+- Super Admin: 
+    - Correo: matiasortegasepulveda@gmail.com
+    - Contraseña: MOSepulveda1
+- Admin:
+    - Correo: matiasortega@orsep.cl
+    - Contraseña: MOSepulveda1
+- Usuario1:
+    - Correo: manuel@gmail.com
+    - Contraseña: MOSepulveda1
+- Usuario2:
+    - Correo: luisfuentes@gmail.com
+    - Contraseña: MOSepulveda1
+
+- Paquetes Instalar:
+  - pip install django
+  - pip install pymysql
